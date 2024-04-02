@@ -23,7 +23,7 @@ class ProjectSeeder extends Seeder
       $project->slug = Str::of($project->title)->slug('-');
       $project->description = $faker->paragraph(5);
       $project->git_hub = $faker->unique()->url();
-      $project->image = $faker->imageUrl('preview', true, $project->slug);
+      $project->image = $faker->imageUrl(640, 480, 'preview', true, $project->slug);
       $project->save();
     }
   }
