@@ -6,6 +6,7 @@
 
 @section('maincontent')
   <div class="container my-5">
+    <a href="{{ route('admin.projects.create') }}" class="btn btn-outline-primary mb-3"><i class="fa-solid fa-plus"></i> New project</a>
     <table class="table mb-5">
       <thead>
         <tr>
@@ -22,6 +23,7 @@
             <td class="fs-4">
               <a class="me-2" href="{{ $project->git_hub }}"><i class="fa-brands fa-github"></i></a>
               <a class="me-2" href="{{ route('admin.projects.show', $project) }}"><i class="fa-solid fa-eye"></i></a>
+              <a class="me-2" href="{{ route('admin.projects.edit', $project) }}"><i class="fa-solid fa-pen-to-square"></i></a>
             </td>
           </tr>
         @empty
