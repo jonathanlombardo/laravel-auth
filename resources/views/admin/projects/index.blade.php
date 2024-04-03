@@ -24,6 +24,8 @@
               <a class="me-2" href="{{ $project->git_hub }}"><i class="fa-brands fa-github"></i></a>
               <a class="me-2" href="{{ route('admin.projects.show', $project) }}"><i class="fa-solid fa-eye"></i></a>
               <a class="me-2" href="{{ route('admin.projects.edit', $project) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+              <a class="me-2 text-danger" href="#" onclick="event.preventDefault(); document.getElementById('destroy-btn-{{ $project->id }}').click();"><i class="fa-solid fa-trash"></i></a>
+              <button id="destroy-btn-{{ $project->id }}" type="button" class="d-none" data-bs-toggle="modal" data-bs-target="#confirm-destroy-{{ $project->id }}"></button>
             </td>
           </tr>
         @empty
@@ -35,4 +37,31 @@
     </table>
     {{ $projects->links() }}
   </div>
+@endsection
+
+@section('modals')
+  @foreach ($projects as $project)
+    <!-- Modal -->
+    <div class="modal fade" id="confirm-destroy-{{ $project->id }}" tabindex="-1" aria-labelledby="confirmDestroyModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Deleting project</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            The elimination is permanent. Would you like to delete project {{ $project->title }}?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger">Delete project</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
 @endsection
