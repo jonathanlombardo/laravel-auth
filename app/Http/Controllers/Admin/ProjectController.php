@@ -78,8 +78,7 @@ class ProjectController extends Controller
   {
     $datas = $request->all();
     $project->fill($datas);
-    if ($request['author'])
-      $project->author = $request['author'];
+    $project->author = $request['author'];
     $project->slug = Str::of($project->title)->slug('-');
     $project->save();
 
