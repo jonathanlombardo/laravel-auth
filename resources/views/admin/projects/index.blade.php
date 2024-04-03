@@ -21,7 +21,7 @@
             <td>{{ $project->title }}</td>
             <td>{{ $project->author }}</td>
             <td class="fs-4">
-              <a class="me-2" href="{{ $project->git_hub }}"><i class="fa-brands fa-github"></i></a>
+              <a class="me-2 {{ $project->git_hub ? '' : 'disabled' }}" href="{{ $project->git_hub }}"><i class="fa-brands fa-github"></i></a>
               <a class="me-2" href="{{ route('admin.projects.show', $project) }}"><i class="fa-solid fa-eye"></i></a>
               <a class="me-2" href="{{ route('admin.projects.edit', $project) }}"><i class="fa-solid fa-pen-to-square"></i></a>
               <a class="me-2 text-danger" href="#" onclick="event.preventDefault(); document.getElementById('destroy-btn-{{ $project->id }}').click();"><i class="fa-solid fa-trash"></i></a>

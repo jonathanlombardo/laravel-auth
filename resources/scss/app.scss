@@ -26,6 +26,12 @@ a {
     &:hover {
         filter: brightness(0.8);
     }
+
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: default;
+    }
 }
 
 .main-wrapper {

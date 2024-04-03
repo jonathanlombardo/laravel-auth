@@ -22,7 +22,7 @@
           <div><strong>Description</strong></div>
           <div>{{ $project->description }}</div>
         </div>
-        <a href="{{ $project->git_hub }}" class="btn btn-outline-primary">Go to GitHub Repo</a>
+        <a href="{{ $project->git_hub }}" class="btn btn-outline-primary {{ $project->git_hub ? '' : 'disabled' }}">Go to GitHub Repo</a>
         <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-primary">Edit Project</a>
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirm-destroy">Delete Project</button>
       </div>

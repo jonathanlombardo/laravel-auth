@@ -18,7 +18,7 @@ return new class extends Migration {
       $table->string('slug')->unique();
       $table->string('author', 50)->default('Jonathan Lombardo');
       $table->text('description')->nullable();
-      $table->string('git_hub')->unique();
+      $table->string('git_hub')->nullable()->unique();
       $table->string('image')->nullable();
       $table->timestamps();
     });
