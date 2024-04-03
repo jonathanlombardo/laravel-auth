@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
-use PharIo\Manifest\Author;
 
 class ProjectController extends Controller
 {
