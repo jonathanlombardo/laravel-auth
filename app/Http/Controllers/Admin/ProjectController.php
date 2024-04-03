@@ -6,6 +6,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use PharIo\Manifest\Author;
 
 class ProjectController extends Controller
 {
@@ -38,9 +39,9 @@ class ProjectController extends Controller
     $datas = $request->all();
     $project = new Project;
     $project->fill($datas);
+    if ($request['author'])
+      $project->author = $request['author'];
     $project->slug = Str::of($project->title)->slug('-');
-    if (!$project->author)
-      $project->author = 'Jonathan Lombardo';
     $project->save();
 
     return redirect()->route('admin.projects.index')->with('message', 'Project Saved');
@@ -77,9 +78,9 @@ class ProjectController extends Controller
   {
     $datas = $request->all();
     $project->fill($datas);
+    if ($request['author'])
+      $project->author = $request['author'];
     $project->slug = Str::of($project->title)->slug('-');
-    if (!$project->author)
-      $project->author = 'Jonathan Lombardo';
     $project->save();
 
     return redirect()->route('admin.projects.index')->with('message', 'Project Updated');
