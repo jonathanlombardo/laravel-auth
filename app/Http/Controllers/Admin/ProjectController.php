@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -34,8 +35,10 @@ class ProjectController extends Controller
    *
    * @param  \Illuminate\Http\Request  $request
    */
-  public function store(Request $request)
+  public function store(ProjectFormRequest $request)
   {
+    $request->validated();
+
     $datas = $request->all();
     $project = new Project;
     $project->fill($datas);
@@ -74,8 +77,11 @@ class ProjectController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @param  \App\Models\Project  $project
    */
-  public function update(Request $request, Project $project)
+  public function update(ProjectFormRequest $request, Project $project)
   {
+
+    $request->validated();
+
     $datas = $request->all();
     $project->fill($datas);
     $project->author = $request['author'];
