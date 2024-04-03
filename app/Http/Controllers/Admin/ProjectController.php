@@ -48,7 +48,7 @@ class ProjectController extends Controller
     $project->slug = Str::of($project->title)->slug('-');
     $project->save();
 
-    return redirect()->route('admin.projects.index')->with('message', 'Project Saved');
+    return redirect()->route('admin.projects.show', $project)->with('message', 'Project Saved');
 
   }
 
@@ -90,7 +90,7 @@ class ProjectController extends Controller
     $project->slug = Str::of($project->title)->slug('-');
     $project->save();
 
-    return redirect()->route('admin.projects.index')->with('message', 'Project Updated');
+    return redirect()->route('admin.projects.show', $project)->with('message', 'Project Updated');
   }
 
   /**
