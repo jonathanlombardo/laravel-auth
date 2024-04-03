@@ -16,7 +16,7 @@
     <h1>{{ $editForm ? 'Edit project' : 'Create Project' }}</h1>
 
     @if ($errors->any())
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div class="error-alert alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Check and correct fields on error!</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
@@ -79,4 +79,26 @@
 
     </form>
   </div>
+@endsection
+
+@section('script')
+  <script>
+    const inputs = document.querySelectorAll('input');
+    const textareas = document.querySelectorAll('textarea');
+    const errorAlertEl = document.querySelector('.error-alert');
+
+    inputs.forEach((input) => {
+      input.addEventListener("input", function() {
+        this.classList.remove('is-invalid')
+        errorAlertEl.classList.add('d-none')
+      })
+    });
+
+    textareas.forEach((textarea) => {
+      textarea.addEventListener("change", function() {
+        this.classList.remove('is-invalid')
+        errorAlertEl.classList.add('d-none')
+      })
+    });
+  </script>
 @endsection
