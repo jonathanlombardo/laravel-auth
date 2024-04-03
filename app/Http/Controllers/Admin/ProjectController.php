@@ -27,7 +27,8 @@ class ProjectController extends Controller
    */
   public function create()
   {
-    return view('admin.projects.form');
+    $editForm = false;
+    return view('admin.projects.form', compact('editForm'));
   }
 
   /**
@@ -68,7 +69,8 @@ class ProjectController extends Controller
    */
   public function edit(Project $project)
   {
-    return view('admin.projects.form', compact('project'));
+    $editForm = true;
+    return view('admin.projects.form', compact('project', 'editForm'));
   }
 
   /**
